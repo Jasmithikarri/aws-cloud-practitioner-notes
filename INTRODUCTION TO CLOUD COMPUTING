@@ -1,0 +1,89 @@
+The Five Characteristics of Cloud Computing:
+On-demand self service:
+	• ﻿﻿Users can provision resources and use them without human interaction from the service provider
+Broad network access:
+	• ﻿﻿Resources available over the network, and can be accessed by diverse client platforms
+Multi-tenancy and resource pooling:
+	• ﻿﻿Multiple customers can share the same infrastructure and applications with security and privacy
+	• ﻿﻿Multiple customers are serviced from the same physical resources
+Rapid elasticity and scalability:
+	• ﻿﻿Automatically and quickly acquire and dispose resources when needed
+	• ﻿﻿Quickly and easily scale based on demand
+﻿﻿Measured service:
+	• ﻿﻿Usage is measured, users pay correctly for what they have used.
+
+Six Advantages of Cloud Computing
+
+    Trade capital expense (CAPEX) for operational expense (OPEX) ﻿﻿Pay On-Demand: don't own hardware
+	Reduced Total Cost of Ownership (TCO) & Operational Expense (OPEX)
+	• ﻿﻿Benefit from massive economies of scale: Prices are reduced as AWS is more efficient due to large scale
+	• ﻿﻿Stop guessing capacity: Scale based on actual measured usage
+	• ﻿﻿Increase speed and agility
+	• ﻿﻿Stop spending money running and maintaining data centers
+	• ﻿﻿Go global in minutes: leverage the AWS global infrastructure
+
+Problems solved by the Cloud
+	• ﻿﻿Flexibility: change resource types when needed
+	• ﻿﻿Cost-Effectiveness: pay as you go, for what you use
+	• ﻿﻿Scalability: accommodate larger loads by making hardware stronger or adding additional nodes
+	• ﻿﻿Elasticity: ability to scale out and scale-in when needed
+	• ﻿﻿High-availability and fault-tolerance: build across data centers
+	• ﻿﻿Agility: rapidly develop, test and launch software applications
+
+• Pricing of the Cloud - Quick Overview
+	• ﻿﻿AWS has 3 pricing fundamentals, following the pay-as-you-go pricing model
+﻿﻿Compute:
+	• ﻿﻿Pay for compute time
+﻿﻿Storage:
+	• ﻿﻿Pay for data stored in the Cloud
+Data transfer OUT of the Cloud:
+	• ﻿﻿Data transfer IN is free
+	• ﻿﻿Solves the expensive issue of traditional IT
+
+AWS Global Infrastructure
+	• ﻿﻿AWS Regions
+	• ﻿﻿AWS Availability Zones
+	• ﻿﻿AWS Data Centers
+	• ﻿﻿AWS Edge Locations /
+Points of Presence
+
+AWS Regions
+	• ﻿﻿AWS has Regions all around the world
+	• ﻿﻿Names can be us-east- I, eu-west-3...
+	• ﻿﻿A region is a cluster of data centers
+	• ﻿﻿Most AWS services are region-scoped
+
+How to choose an AWS Region?
+If you need to launch a new application, where should you do it?
+?
+	• ﻿﻿Compliance with data governance and legal requirements: data never leaves a region without your explicit permission
+	• ﻿﻿Proximity to customers: reduced latency
+	• ﻿﻿Available services within a Region: new services and new features aren't available in every Region
+	• ﻿﻿Pricing: prising varies region to region and is transparent in the service pricing page
+
+Tour of the AWS Console
+AWS has Global Services:
+	• ﻿﻿Identity and Access Management (IAM)
+	• ﻿﻿Route 53 (DNS service)
+	• ﻿﻿CloudFront (Content Delivery Network)
+	• ﻿﻿WAF (Web Application Firewall)
+﻿﻿Most AWS services are Region-scoped:
+	• ﻿﻿Amazon EC2 (Infrastructure as a Service)
+	• ﻿﻿Elastic Beanstalk (Platform as a Service)
+	• ﻿﻿Lambda (Function as a Service)
+	• ﻿﻿Rekognition (Software as a Service)
+Yes, AWS Savings Plans currently cover only three services:
+	1. Amazon EC2
+	2. AWS Lambda
+	3. AWS Fargate
+• Save money for reserved and savings plan(8):
+• Amazon EC2
+• Amazon RDS
+• Amazon Redshift
+• Amazon DynamoDB
+• Amazon ElastiCache
+• Amazon OpenSearch Service
+• AWS Lambda
+• AWS Fargate
+
+
