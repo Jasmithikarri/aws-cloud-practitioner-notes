@@ -1,0 +1,187 @@
+Feature	                              IAM Users                                      	IAM Groups	                              IAM Roles	                                                      IAM Policies
+Purpose                   	Long-term credentials for individuals      	Manage permissions for multiple users	        Temporary permissions for AWS services, applications        	Define what actions are allowed or denied
+Used By	                    People or applications	                        Multiple IAM Users	                         AWS services, applications, or federated users            	Assigned to IAM Users, Groups, or Roles
+Access Type	             Console and programmatic access	                         N/A	                                     Temporary access	                                      Not used for access but to enforce permissions
+Credentials	Permanent       (password, access keys)	                               N/A	                                   Temporary (assumed role via STS)	                        Not credentials, but a set of rules
+Use Case               	Admin, developer, or service accounts	       Manage teams like "Admins" or "Developers"	           EC2 accessing S3, Lambda accessing DynamoDB	            Define permissions for users, groups, and roles
+
+
+IAM: Users & Groups
+	• ﻿﻿IAM = Identity and Access Management, Global service
+	• ﻿﻿Root account created by default, shouldn't be used or shared
+	• ﻿﻿Users are people within your organization, and can be grouped
+	• ﻿﻿Groups only contain users, not other groups
+	• ﻿﻿Users don't have to belong to a group, and user can belong to multiple groups
+IAM: Permissions
+	• ﻿﻿Users or Groups can be assigned JSON documents called policies
+	• ﻿﻿These policies define the permissions of the users
+	• ﻿﻿In AWS you apply the least privilege principle: don't give more permissions than a user needs
+Statements consists of
+	• Sid: an identifier for the statement (optional)
+	• ﻿﻿Effect: whether the statement allows or denies access (Allow, Deny)
+	• ﻿﻿Principal: account/user/role to which this policy applied to
+	• ﻿﻿Action: list of actions this policy allows or denies
+	• ﻿﻿Resource: list of resources to which the actions applied to
+	• ﻿﻿Condition: conditions for when this policy is in effect (optional)
+	• A statement in a policy is like a rule that defines who can do what on which resources under specific conditions. Here's what each part means:
+		1. Sid (Statement ID):
+			○ It's like a name or label for the rule. It's optional and helps you identify the rule easily.
+		2. Effect:
+			○ This tells whether the rule allows or denies access.
+			○ Options: Allow or Deny.
+			○ Example: "Allow this user to read files" or "Deny access to delete data."
+		3. Principal:
+			○ This specifies who the rule applies to.
+			○ Example: A specific user, account, or role.
+		4. Action:
+			○ This lists the specific actions the rule allows or denies.
+			○ Example: Actions like s3:GetObject (read a file) or ec2:StartInstances (start a virtual machine).
+		5. Resource:
+			○ This lists the things (resources) the actions apply to.
+			○ Example: A specific bucket, database, or server.
+		6. Condition (optional):
+			○ These are extra rules that specify when or under what circumstances the rule applies.
+			○ Example: Allow access only from a certain IP address or during work hours.
+	
+IAM - Password Policy
+	• ﻿﻿Strong passwords = higher security for your account
+﻿﻿In AWS, you can setup a password policy:
+	• ﻿﻿Set a minimum password length
+	• ﻿﻿Require specific character types:
+	• ﻿﻿including uppercase letters
+	• ﻿﻿lowercase letters
+	• ﻿﻿numbers
+	• ﻿﻿non-alphanumeric characters
+	• ﻿﻿Allow all IAM users to change their own passwords
+	• ﻿﻿Require users to change their password after some time (password expiration)
+	• ﻿﻿Prevent password re-use
+Multi Factor Authentication - MFA
+	• ﻿﻿Users have access to your account and can possibly change configurations or delete resources in your AWS account
+	• ﻿﻿You want to protect your Root Accounts and AM users
+	• ﻿﻿MFA = password you know + security device you own
+Password +
+
+How can users access AWS?
+To access AWS, you have three options:
+	• ﻿﻿AWS Management Console (protected by password + MFA)
+	• ﻿﻿AWS Command Line Interface (CLI): protected by access keys
+	• ﻿﻿AWS Software Developer Kit (SDK) - for code: protected by access keys
+	• ﻿﻿Access Keys are generated through the AWS Console
+	• ﻿﻿Users manage their own access keys
+	• ﻿﻿Access Keys are secret, just like a password. Don't share them
+	• ﻿﻿Access Key ID ~= username
+	• ﻿﻿Secret Access Key ~= password
+What's the AWS CLI?
+	• ﻿﻿A tool that enables you to interact with AWS services using commands in your command-line shell
+	• ﻿﻿Direct access to the public APls of AWS services
+	• ﻿﻿You can develop scripts to manage your resources
+	• ﻿﻿It's open-source  https://github.com/aws/aws-cli
+	• ﻿﻿Alternative to using AWS Management Console
+What's the AWS SDK?
+	• ﻿﻿AWS Software Development Kit (AWS SDK)
+	• ﻿﻿Language-specific APis (set of libraries)
+	• ﻿﻿Enables you to access and manage AWS services programmatically
+	• ﻿﻿Embedded within your application
+	• ﻿﻿Supports
+	• ﻿﻿SDKs (JavaScript, Python, PHP, NET, Ruby, Java, Go, Node.js, C++)
+	• ﻿﻿Mobile SDKs (Android, iOS, ...)
+	• ﻿﻿loT Device SDKs (Embedded C, Arduino, ...)
+	• ﻿﻿Example: AWS CLI is built on AWS SDK for Python
+IAM Roles for Services
+	• ﻿﻿Some AWS service will need to perform actions on your behalf
+	• ﻿﻿To do so, we will assign permissions to AWS services with IAM Roles
+	• ﻿﻿Common roles:
+	• ﻿﻿EC2 Instance Roles
+	• ﻿﻿Lambda Function Roles
+	• ﻿﻿Roles for CloudFormation
+IAM Security Tools
+	• ﻿﻿IAM Credentials Report (account-level)
+	• ﻿﻿a report that lists all your account's users and the status of their various credentials
+	• ﻿﻿IAM Access Advisor(LAST ACCESS) (user-level)
+	• ﻿﻿Access advisor shows the service permissions granted to a user and when those services were last accessed.
+	• ﻿﻿You can use this information to revise your policies.
+IAM Guidelines & Best Practices
+	• ﻿﻿Don't use the root account except for AWS account setup
+	• ﻿﻿One physical user = One AWS user
+	• ﻿﻿Assign users to groups and assign permissions to groups
+	• ﻿﻿Create a strong password policy
+	• ﻿﻿Use and enforce the use of Multi Factor Authentication (MFA)
+	• ﻿﻿Create and use Roles for giving permissions to AWS services
+	• ﻿﻿Use Access Keys for Programmatic Access (CLI / SDK)
+	• ﻿﻿Audit permissions of your account using IAM Credentials Report & IAM
+Access Advisor
+	• ﻿﻿Never share IAM users & Access Keys
+Shared Responsibility Model for IAM
+aws
+	• ﻿﻿Infrastructure (global network security)
+	• ﻿﻿Configuration and vulnerability analysis
+	• ﻿﻿Compliance validation
+You
+	• ﻿﻿Users, Groups, Roles, Policies management and monitoring
+	• ﻿﻿Enable MFA on all accounts
+	• ﻿﻿Rotate all your keys often
+	• ﻿﻿Use IAM tools to apply appropriate permissions
+	• ﻿﻿Analyze access patterns & review permissions
+AWS Managed Policies
+	• What: Predefined policies created and managed by AWS.
+	• Purpose: Simplify permission management for common use cases.
+	• Example: AmazonS3FullAccess, AdministratorAccess.
+	• Pros:
+		○ Easy to use and maintain.
+		○ Automatically updated by AWS for new services/features.
+	• Cons:
+		○ Cannot be customized.
+	• Use Case: Quickly grant standard permissions like full access to S3 or EC2.
+
+2. Customer Managed Policies
+	• What: Custom policies created and managed by the user.
+	• Purpose: Tailor permissions to specific needs.
+	• Example: A policy allowing read-only access to a specific S3 bucket.
+	• Pros:
+		○ Fully customizable.
+		○ Reusable for multiple users, groups, or roles.
+	• Cons:
+		○ Requires manual updates when new services/features are introduced.
+	• Use Case: Create fine-grained access controls for specific teams or apps.
+
+3. Inline Policies
+	• What: Policies directly attached to a single user, group, or role.
+	• Purpose: Provide permissions tied closely to a specific identity.
+	• Example: An inline policy giving one user access to a specific EC2 instance.
+	• Pros:
+		○ Very specific to the identity it’s attached to.
+	• Cons:
+		○ Not reusable for other identities.
+		○ Harder to manage and track across multiple identities.
+	• Use Case: Grant unique, one-off permissions for a user or role.
+
+4. Service Control Policies (SCPs)
+	• What: Policies applied at the organization or account level (via AWS Organizations).
+	• Purpose: Set permission boundaries for all users and roles within an account or organizational unit (OU).
+	• Example: Deny access to RDS across all accounts in an organization.
+	• Pros:
+		○ Enforces organization-wide governance.
+		○ Applies even to IAM admins.
+	• Cons:
+		○ Requires AWS Organizations.
+		○ Does not grant permissions; only restricts them.
+	• Use Case: Restrict services like EC2 or S3 in certain accounts.
+
+5. Permissions Boundaries
+	• What: Policies that define the maximum permissions an IAM user or role can have.
+	• Purpose: Prevent overly permissive access when users create their own policies.
+	• Example: A boundary allowing access only to S3, even if a user’s policy grants full AWS access.
+	• Pros:
+		○ Adds an extra layer of security.
+	• Cons:
+		○ Complex to set up and understand.
+	• Use Case: Limit what permissions developers can grant themselves.
+
+Policy Type	Scope	                Who Manages It	             Edit/Customizable	             Reusability
+AWS Managed Policies	            AWS-defined	AWS                   	No	                         Yes
+Customer Managed Policies	        User-defined multiple	User	       Yes	                         Yes
+Inline Policies	                 Attached to each identity	User	   Yes	                          No
+SCPs	Organization/account	         User (Org admin)	              Yes	                        Yes (Org-wide)
+Permissions Boundaries	         Identity-specific	User	          Yes	                   N/A (acts as a boundary)
+
+
