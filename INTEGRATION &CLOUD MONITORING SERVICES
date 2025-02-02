@@ -1,0 +1,134 @@
+Integration Section - Summary
+SQS:
+	• ﻿﻿Queue service in AWS
+	• ﻿﻿Multiple Producers, messages are kept up to 14 days
+	• ﻿﻿Multiple Consumers share the read and delete messages when done
+	• ﻿﻿Used to decouple applications in AWS
+	• Its a pull-based one
+SNS:
+	• ﻿﻿Notification service in AWS
+	• ﻿﻿Subscribers: Email, Lambda, SQS, HTTP, Mobile...
+	• ﻿﻿Multiple Subscribers, send all messages to all of them
+	• ﻿﻿No message retention
+	• Its pushed based one and decouple too
+	
+﻿﻿Kinesis: real-time data streaming, persistence(data doesn’t change) and quick analysis.
+
+Amazon MQ: managed message broker for ActiveMQ and RabbitMQ in the cloud (MQTT, AMQP.. protocols)
+
+Amazon SES: is ideal for businesses needing to send and receive large volumes of email. It provides scalable and cost-effective email solutions, with features like transactional and bulk email support, high deliverability, email analytics, and security features like SPF, DKIM, and DMARC. It's highly customizable and integrates well with other AWS services to help you build more complex workflows.
+
+Amazon CloudWatch Metrics
+	• ﻿﻿CloudWatch provides metrics for every services in AWS
+	• ﻿﻿Metric is a variable to monitor (CUUtilization, Networkin...)
+	• ﻿﻿Metrics have timestamps
+• CloudWatch: Primarily for monitoring and visualization of metrics and logs (no built-in task scheduling).
+• AWS Health Dashboard: Provides personalized notifications and alerts for your specific account’s events, scheduled maintenance, and service disruptions.
+
+Important Metrics
+	• ﻿﻿EC2 instances: CPU Utilization, Status Checks, Network (not RAM)
+	• ﻿﻿Default metrics every 5 minutes
+	• ﻿﻿Option for Detailed Monitoring ($$$): metrics every I minute
+	• ﻿﻿EBS volumes: Disk Read/Writes
+	• ﻿﻿S3 buckets: BucketSizeBytes, NumberOfObjects, AllRequests
+	• ﻿﻿Billing: Total Estimated Charge (only in us-east-I)
+	• ﻿﻿Service Limits: how much you've been using a service API
+	• ﻿﻿Custom metrics: push your own metrics
+Amazon CloudWatch Alarms
+	• ﻿﻿Alarms are used to trigger notifications for any metric
+	• ﻿﻿Alarms actions...
+	• ﻿﻿Auto Scaling: increase or decrease EC2 instances "desired" count
+	• ﻿﻿EC2 Actions: stop, terminate, reboot or recover an EC2 instance
+	• ﻿﻿SNS notifications: send a notification into an SNS topic
+	• ﻿﻿Various options (sampling,%, max, min, etc...)
+	• ﻿﻿Can choose the period on which to evaluate an alarm
+	• ﻿﻿Example: create a billing alarm on the CloudWatch Billing metric
+	• ﻿﻿Alarm States: OK. INSUFFICIENT_DATA, ALARM
+Amazon CloudWatch Logs
+	• ﻿﻿Cloud Watch Logs can collect log trom:
+	• ﻿﻿Elastic Beanstalk: collection of logs from application
+	• ﻿﻿ECS: collection from containers
+	• ﻿﻿AWS Lambda: collection from function logs
+	• ﻿﻿CloudTrail based on filter
+	• ﻿﻿CloudWatch log agents: on EC2 machines or on-premises servers
+	• ﻿﻿Route53: Log DNS queries a
+	• ﻿﻿Enables real-time monitoring of logs
+	• ﻿﻿Adjustable CloudWatch Logs retention
+
+Cloud Watch Logs for EC2
+	• ﻿﻿By default, no logs from your EC2 instance will go to CloudWatch
+	• ﻿﻿You need to run a CloudWatch agent on EC2 to push the log files you want
+	• ﻿﻿Make sure IAM permissions are correct
+	• ﻿﻿The CloudWatch log agent can be setup on-premises too
+Amazon EventBridge (formerly CloudWatch Events)
+• Schedule: Cron jobs (scheduled scripts)
+Schedule Every hour
+Trigger script on Lambda function
+• Event Pattern: Event rules to react to a service doing something
+EMAIL
+IAM Root User Sign in Event
+SNS Topic with Email Notification
+• Trigger Lambda functions, send SQS/SNS messages... 
+	• Schema Registry: model event schema
+	• ﻿﻿You can archive events (all/filter) sent to an event bus indefinitely or set period)
+	• ﻿﻿Ability to replay archived events
+AWS Cloud Trail
+	• ﻿﻿Provides governance, compliance and audit for your AWS Account
+	• ﻿﻿Cloud Trail is enabled by default!
+	• ﻿﻿Get an history of events / APl calls made within your AWS Account by
+	• ﻿﻿Console
+	• ﻿﻿SDK
+	• ﻿﻿CLI
+	• ﻿﻿AWS Services
+• Can put logs from CloudTrail into CloudWatch Logs or S3
+
+AWS X-Ray advantages
+	• ﻿﻿Troubleshooting performance (bottlenecks)
+	• ﻿﻿Understand dependencies in a microservice architecture
+	• ﻿﻿Pinpoint service issues
+	• ﻿﻿Review request behavior
+	• ﻿﻿Find errors and exceptions
+	• ﻿﻿Are we meeting time SLA?
+	• ﻿﻿Where I am throttled?
+	• ﻿﻿Identify users that are impacted
+Amazon CodeGuru
+	• ﻿﻿An ML-powered service for automated code reviews and application performance recommendations
+	• ﻿﻿Provides two functionalities
+	• ﻿﻿CodeGuru Reviewer: automated code reviews for static code analysis (development)
+	• ﻿﻿CodeGuru Profiler: visibility/recommendations about application performance during
+Amazon CodeGuru Reviewer
+CodeGuru > Code revieurs > mw2tsaS600000000
+RepositoryAnalysis-amazon-codeguru-reviewer-sample-:
+• Identra blities andess-co-lind bugs
+	• ﻿﻿Example: common coding best practices, resource leaks, security detection, input validation
+	• ﻿﻿Uses Machine Learning and automated reasoning
+	• ﻿﻿Hard-learned lessons across millions of code reviews on 1000s of open-source and Amazon repositories
+	• ﻿﻿Supports Java and Python
+	• ﻿﻿Integrates with GitHub, Bitbucket, and
+AWS CodeCommit
+Amazon CodeGuru Profiler
+• Helia tinderstand the runtime behavior of your
+	• ﻿﻿Example: identify if your application is consuming excessive CPU capacity on a logging routine
+	• ﻿﻿Features:
+	• ﻿﻿Identify and remove code inefficiencies
+	• ﻿﻿Improve application pertormance e.g., reduce CPU utilization
+	• ﻿﻿Decrease compute costs
+	• ﻿﻿Provides heap summary (identify which objects using up memory)
+	• ﻿﻿Anomaly Detection
+	• ﻿﻿Support applications running on AWS or on-premise
+	• ﻿﻿Minimal overhead on application
+AWS Health Dashboard - Service History public anyone can access
+	• ﻿﻿Shows all regions, all services health
+	• ﻿﻿Shows historical information for each day
+	• ﻿﻿Has an RSS feed you can subscribe to
+	• Previously called AWS ServiceHealth Dashboard
+AWS Health Dashboard - Your Account
+	• ﻿﻿Previously called AWS Personal Health Dashboard (PHD)
+	• ﻿﻿AWS Account Health Dashboard provides alerts and remediation guidance when AWS is experiencing events that may impact you.
+	• ﻿﻿While the Service Health Dashboard displays the general status of AWS services, Account Health Dashboard gives you a personalized view into the seresomance and availability of the AWS services underlying your
+	• ﻿﻿The dashboard displays relevant and timely information to help you nanage events in progress and provides proactive notification to help you plan for scheduled activities.
+	• ﻿﻿Can aggregate data from an entire AWS Organization
+AWS Health Dashboard - Your Account
+	• ﻿﻿Global service
+	• ﻿﻿Shows how AWS outages directly impact you & your AWS resources
+	• ﻿﻿Alert, remediation, proactive, scheduled activities
